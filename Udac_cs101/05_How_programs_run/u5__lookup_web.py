@@ -1,0 +1,10 @@
+# -*- coding: utf-8 -*-
+
+# Change the lookup procedure
+# to now work with dictionaries.
+
+def lookup(index, keyword):
+    if keyword in index:
+        return index[keyword]
+    else:
+        return None

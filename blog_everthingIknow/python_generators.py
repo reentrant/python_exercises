@@ -49,6 +49,7 @@ def get_primes_generator_function(n):# starting point
         if is_prime(n):
             yield n
         n += 1
+    return
     
 '''
 Based on an infinite list [from start to infinity]

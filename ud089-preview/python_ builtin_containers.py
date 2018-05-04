@@ -35,7 +35,8 @@
 # In[113]:
 
 
-names=['John Smith', 'Adam Dom','Tim Cook', 'Sundar Pichai', 'Elon Musk', 'Sebastian Thrun', 'Steve Jobs', 'Bill Gates']
+names=['John Smith', 'Adam Dom','Tim Cook', 'Sundar Pichai', 'Elon Musk',
+        'Sebastian Thrun', 'Steve Jobs', 'Bill Gates']
 
 
 # In[114]:
@@ -56,7 +57,7 @@ for name in names:
 # In[115]:
 
 
-len(names)
+print("len(names) = ", len(names))
 
 
 # ** Instructions **
@@ -66,7 +67,7 @@ len(names)
 # In[116]:
 
 
-names.index('Elon Musk')
+print(names.index('Elon Musk'))
 
 
 # ** Instructions **

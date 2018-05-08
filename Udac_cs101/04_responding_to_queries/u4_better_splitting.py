@@ -16,12 +16,12 @@
 # the source string up by the characters in the
 # splitlist.
 
-def split_string(source,splitlist):
+def split_string(str_source,str_separators):
     word_list = []
     new_word = ''
-    #print source.split()
-    for c in source:
-        if c in splitlist:
+    #print str_source.split()
+    for c in str_source:
+        if c in str_separators:
             if new_word:
                 word_list.append(new_word)
                 new_word = ''
@@ -34,13 +34,13 @@ def split_string(source,splitlist):
 
 if __name__ == '__main__':
     out = split_string("This is a test-of the,string separation-code!"," ,!-")
-    print out
+    print (out)
 #>>> ['This', 'is', 'a', 'test', 'of', 'the', 'string', 'separation', 'code']
 
     out = split_string("After  the flood   ...  all the colors came out.", " .")
-    print out
+    print (out)
 #>>> ['After', 'the', 'flood', 'all', 'the', 'colors', 'came', 'out']
 
     out = split_string("First Name,Last Name,Street Address,City,State,Zip Code",",")
-    print out
+    print (out)
 #>>>['First Name', 'Last Name', 'Street Address', 'City', 'State', 'Zip Code']

@@ -46,7 +46,8 @@ names=['John Smith', 'Adam Dom','Tim Cook', 'Sundar Pichai', 'Elon Musk',
 Print the items in the list called 'names'
 '''
 for name in names:
-    print(name)
+    print(name, ', ', sep='', end = '')
+print()
 
 
 # ** Instructions **
@@ -142,7 +143,7 @@ for index, name in zip(indexes, sorted(names)):
 '''
 Print the values in the dictionary
 '''
-dictionary
+print(dictionary)
 
 
 # The value for a specific key can be extracted as follows
@@ -176,6 +177,7 @@ Print the first five elements from the list 'names'
 '''
 for name in names[:5]:
     print(name)
+print('-' * 5)
 
 
 # In[126]:
@@ -186,8 +188,7 @@ Using replace(), replace the white space between the first and last name with a 
 '''
 for name in names[:5]:
     print(name.replace(' ', '-'))
-
-
+print('-' * 5)
 # In[127]:
 
 
@@ -196,13 +197,14 @@ Using split(), seperate the first name and the last name, Also, using replace(),
 '''
 for name in names[:5]:
     print(name.replace('-', ' ').split(' '))
-
+print('-' * 5)
 
 # In[128]:
 
 
 '''
-The first and last names can be accessed from the list by selecting the appropriate element numbers as follows:
+The first and last names can be accessed from the list by selecting the 
+appropriate element numbers as follows:
 '''
 for name in names[:5]:
     full_name = name.replace('.', ' ').split(' ')
@@ -218,7 +220,8 @@ for name in names[:5]:
 
 
 '''
-Create a list of tuples called 'first_last_names', with each tuple containing the first and last names
+Create a list of tuples called 'first_last_names', with each tuple containing
+ the first and last names
 '''
 first_last_names = []
 for name in sorted(names):
@@ -232,7 +235,7 @@ for name in sorted(names):
 '''
 Print the values in the tuple first_last_names
 '''
-first_last_names
+print(first_last_names)
 
 
 # In[131]:
@@ -294,7 +297,8 @@ last_names
 
 
 '''
-Repeat the above step using list comprehension and store the last names in 'last_names_lc'
+Repeat the above step using list comprehension and store the last names in 
+'last_names_lc'
 '''
 last_names_lc = [name[1] for name in first_last_names]
 

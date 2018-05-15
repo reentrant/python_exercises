@@ -120,7 +120,8 @@ for i in [3,'A',3.5]:
 
 
 '''
-Create a manual mapping between the index and value for the items in the list 'names'
+Create a manual mapping between the index and value for the items in the list 
+'names'
 '''
 for index, name in zip(indexes, sorted(names)):
     print(index, name)

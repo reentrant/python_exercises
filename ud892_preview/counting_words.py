@@ -31,7 +31,7 @@ def count_words(text):
 
 
 def test_run():
-    with open("__init__.py", "r") as f:
+    with open("zen_of_python.txt", "r") as f:
         text = f.read()
         counts = count_words(text)
         sorted_counts = sorted(counts.items(), key=lambda pair: pair[1], reverse=True)

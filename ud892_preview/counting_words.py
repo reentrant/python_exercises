@@ -46,4 +46,8 @@ def test_run():
 
 
 if __name__ == "__main__":
-    test_run()
+    #test_run()
+    with open("C:\Users\jruiz\Conti\RBS_MSM_D_20.20.135R1_V1\Macro1.asc") as f:
+        for line in f:
+            print(line)
+        

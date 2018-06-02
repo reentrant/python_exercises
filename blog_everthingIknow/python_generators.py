@@ -6,14 +6,9 @@ Practice generators with python 3
 Created on 24/04/2018
 @author: jruiz
 '''
-import math
-import random
 
-def factorial(n):
-    if n>1:
-        return n*(factorial(n-1))
-    else:
-        return 1
+import random
+from math import factorial
 
 '''
 Wilson's theorem: http://en.wikipedia.org/wiki/Wilson's_theorem
@@ -32,7 +27,7 @@ Based on a finite list as input identify the prime numbers
 '''
 def fun_with_a_finite_list():
     finite_list = []
-    for i in range(10):
+    for _ in range(10):
         finite_list.append(random.randint(1, 100))
     print(finite_list)
     print(sorted(get_primes_wListComprehensions(finite_list)))
@@ -44,8 +39,8 @@ def fun_with_a_finite_list():
     No list, no memory issues!!!
 '''
 def get_primes_generator_function(n):# starting point
-    MAXIMUM_RECURSION_DEPTH_EXCEEDED = 997
-    while n < MAXIMUM_RECURSION_DEPTH_EXCEEDED:
+#     MAXIMUM_RECURSION_DEPTH_EXCEEDED = 997
+    while n < 50:
         if is_prime(n):
             yield n
         n += 1
@@ -58,8 +53,11 @@ identify the prime numbers
     # print(next(my_generator))
 '''
 def fun_with_an_infinite_list():
-    start = 5
+    start = 3
     i = 0
+    #===========================================================================
+    # a generator is a type of iterator and it can be used in a for loop:
+    #===========================================================================
     for prime in get_primes_generator_function(start):
         print (prime, sep = ' ', end = ' ')
         i += 1
@@ -71,3 +69,6 @@ def fun_with_an_infinite_list():
 if __name__ == '__main__':
     fun_with_a_finite_list()
     fun_with_an_infinite_list()
+    once_more = get_primes_generator_function(5) # new generator
+    print(next(once_more))
+    

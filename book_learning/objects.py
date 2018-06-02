@@ -25,6 +25,7 @@ def main():
 		f1 = Rational(1, 2)
 		print(isinstance(f1, Rational))
 		print(isinstance(f1, object))
+		
 		print(f1.__numerator)
 		
 	except:

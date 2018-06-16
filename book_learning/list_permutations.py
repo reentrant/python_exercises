@@ -7,7 +7,7 @@ Example: List Permutations
 """
 
 from itertools import permutations
-DEBUG = False
+DEBUG = True
 counter = 0
 
 def permute(prefix, suffix):

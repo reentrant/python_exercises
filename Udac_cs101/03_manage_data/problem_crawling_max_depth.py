@@ -24,7 +24,7 @@
 def get_page(url):
     try:
         if url == "http://www.udacity.com/cs101x/index.html":
-            return ('<html> <body> This is a test page for learning to crawl! '
+            return ('<html> <body> This is a test start_page for learning to crawl! '
             '<p> It is a good idea to '
             '<a href="http://www.udacity.com/cs101x/crawling.html">learn to '
             'crawl</a> before you try to  '
@@ -73,13 +73,13 @@ def get_page(url):
         return ""
     return ""
 
-def get_next_target(page):
-    start_link = page.find('<a href=')
+def get_next_target(start_page):
+    start_link = start_page.find('<a href=')
     if start_link == -1:
         return None, 0
-    start_quote = page.find('"', start_link)
-    end_quote = page.find('"', start_quote + 1)
-    url = page[start_quote + 1:end_quote]
+    start_quote = start_page.find('"', start_link)
+    end_quote = start_page.find('"', start_quote + 1)
+    url = start_page[start_quote + 1:end_quote]
     return url, end_quote
 
 def union(p,q):
@@ -87,27 +87,27 @@ def union(p,q):
         if e not in p:
             p.append(e)
 
-def get_all_links(page):
+def get_all_links(start_page):
     links = []
     while True:
-        url,endpos = get_next_target(page)
+        url,endpos = get_next_target(start_page)
         if url:
             links.append(url)
-            page = page[endpos:]
+            start_page = start_page[endpos:]
         else:
             break
     return links
 # Modify the crawl_web procedure to take a second parameter,
 # max_depth, that limits the depth of the search.  We can
-# define the depth of a page as the number of links that must
-# be followed to reach that page starting from the seed page,
+# define the depth of a start_page as the number of links that must
+# be followed to reach that start_page starting from the seed start_page,
 # that is, the length of the shortest path from the seed to
-# the page.  No pages whose depth exceeds max_depth should be
+# the start_page.  No pages whose depth exceeds max_depth should be
 # included in the crawl.
 #
-# For example, if max_depth is 0, the only page that should
-# be crawled is the seed page. If max_depth is 1, the pages
-# that should be crawled are the seed page and every page that
+# For example, if max_depth is 0, the only start_page that should
+# be crawled is the seed start_page. If max_depth is 1, the pages
+# that should be crawled are the seed start_page and every start_page that
 # it links to directly. If max_depth is 2, the crawl should
 # also include all pages that are linked to by these pages.
 
@@ -118,10 +118,10 @@ def crawl_web(seed, max_depth):
     depth = 0
 #     n_pages = 0
     while tocrawl and depth <= max_depth:
-        page = tocrawl.pop()
-        if page not in crawled:
-            union(next_depth, get_all_links(get_page(page)))
-            crawled.append(page)
+        start_page = tocrawl.pop()
+        if start_page not in crawled:
+            union(next_depth, get_all_links(get_page(start_page)))
+            crawled.append(start_page)
         if not tocrawl:
             tocrawl = next_depth
             next_depth = []

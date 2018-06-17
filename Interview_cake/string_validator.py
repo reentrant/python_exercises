@@ -2,13 +2,15 @@
 Created on 01/06/2018
 
 @author: jruiz
-Python has built-in string validation methods for basic data. It can check if a string is composed of alphabetical characters, alphanumeric characters, digits, etc.
+Python has built-in string validation methods for basic data. It can check if a string 
+is composed of alphabetical characters, alphanumeric characters, digits, etc.
 
 
 Task
 
 You are given a string . 
-Your task is to find out if the string  contains: alphanumeric characters, alphabetical characters, digits, lowercase and uppercase characters.
+Your task is to find out if the string  contains: alphanumeric characters, alphabetical
+ characters, digits, lowercase and uppercase characters.
 
 Input Format
 

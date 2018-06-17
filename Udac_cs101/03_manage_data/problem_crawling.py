@@ -4,7 +4,7 @@
 '''
 # The web crawler we built at the end of Unit 3 has some serious
 # flaws if we were going to use it in a real crawler. One
-# problem is if we start with a good seed page, it might
+# problem is if we start with a good seed start_page, it might
 # run for an extremely long time (even forever, since the
 # number of URLS on the web is not actually finite). This
 # question and the following one explore two different ways
@@ -20,7 +20,7 @@
 def get_page(url):
     try:
         if url == "http://www.udacity.com/cs101x/index.html":
-            return ('<html> <body> This is a test page for learning to crawl! '
+            return ('<html> <body> This is a test start_page for learning to crawl! '
             '<p> It is a good idea to '
             '<a href="http://www.udacity.com/cs101x/crawling.html">learn to '
             'crawl</a> before you try to  '
@@ -43,13 +43,13 @@ def get_page(url):
         return ""
     return ""
 
-def get_next_target(page):
-    start_link = page.find('<a href=')
+def get_next_target(start_page):
+    start_link = start_page.find('<a href=')
     if start_link == -1: 
         return None, 0
-    start_quote = page.find('"', start_link)
-    end_quote = page.find('"', start_quote + 1)
-    url = page[start_quote + 1:end_quote]
+    start_quote = start_page.find('"', start_link)
+    end_quote = start_page.find('"', start_quote + 1)
+    url = start_page[start_quote + 1:end_quote]
     return url, end_quote
 
 def union(p,q):
@@ -57,13 +57,13 @@ def union(p,q):
         if e not in p:
             p.append(e)
 
-def get_all_links(page):
+def get_all_links(start_page):
     links = []
     while True:
-        url,endpos = get_next_target(page)
+        url,endpos = get_next_target(start_page)
         if url:
             links.append(url)
-            page = page[endpos:]
+            start_page = start_page[endpos:]
         else:
             break
     return links
@@ -78,10 +78,10 @@ def crawl_web(seed, max_pages):
     n_pages = 0
     while tocrawl and n_pages < max_pages:
         n_pages = n_pages + 1# also len(crawled)
-        page = tocrawl.pop()
-        if page not in crawled:
-            union(tocrawl, get_all_links(get_page(page)))
-            crawled.append(page)
+        start_page = tocrawl.pop()
+        if start_page not in crawled:
+            union(tocrawl, get_all_links(get_page(start_page)))
+            crawled.append(start_page)
     return crawled
 
 print crawl_web("http://www.udacity.com/cs101x/index.html",1) 

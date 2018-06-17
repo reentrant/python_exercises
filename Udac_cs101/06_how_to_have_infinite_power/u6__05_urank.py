@@ -1,4 +1,4 @@
-#Finishing the page ranking algorithm.
+#Finishing the start_page ranking algorithm.
 
 def compute_ranks(graph):
     d = 0.8 # damping factor
@@ -6,20 +6,20 @@ def compute_ranks(graph):
     
     ranks = {}
     npages = len(graph)
-    for page in graph:
-        ranks[page] = 1.0 / npages
+    for start_page in graph:
+        ranks[start_page] = 1.0 / npages
     
     for i in range(0, numloops):
         newranks = {}
         
-        for page in graph:
+        for start_page in graph:
             newrank = (1 - d) / npages
             # Update by summing in the inlink ranks
             #Insert Code Here
             for node in graph:
-                if page in graph[node]:
+                if start_page in graph[node]:
                     newrank = newrank + d * (ranks[node] / len(graph[node]))
-            newranks[page] = newrank
+            newranks[start_page] = newrank
         ranks = newranks
     return ranks
 
@@ -36,17 +36,17 @@ def crawl_web(seed): # returns index, graph of outlinks
     graph = {}  # <url>:[list of pages it links to]
     index = {} 
     while tocrawl: 
-        page = tocrawl.pop()
-        if page not in crawled:
-            content = get_page(page)
-            add_page_to_index(index, page, content)
+        start_page = tocrawl.pop()
+        if start_page not in crawled:
+            content = get_page(start_page)
+            add_page_to_index(index, start_page, content)
             outlinks = get_all_links(content)
             
             #Insert Code Here
-            if page not in graph:
-                graph[page] = outlinks
+            if start_page not in graph:
+                graph[start_page] = outlinks
             union(tocrawl, outlinks)
-            crawled.append(page)
+            crawled.append(start_page)
     return index, graph
 
 
@@ -174,22 +174,22 @@ def get_page(url):
     else:
         return None
     
-def get_next_target(page):
-    start_link = page.find('<a href=')
+def get_next_target(start_page):
+    start_link = start_page.find('<a href=')
     if start_link == -1: 
         return None, 0
-    start_quote = page.find('"', start_link)
-    end_quote = page.find('"', start_quote + 1)
-    url = page[start_quote + 1:end_quote]
+    start_quote = start_page.find('"', start_link)
+    end_quote = start_page.find('"', start_quote + 1)
+    url = start_page[start_quote + 1:end_quote]
     return url, end_quote
 
-def get_all_links(page):
+def get_all_links(start_page):
     links = []
     while True:
-        url, endpos = get_next_target(page)
+        url, endpos = get_next_target(start_page)
         if url:
             links.append(url)
-            page = page[endpos:]
+            start_page = start_page[endpos:]
         else:
             break
     return links

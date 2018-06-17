@@ -3,7 +3,7 @@ import sys
 
 url = ""
 
-page = '<li><a href="http://www.nytimes.com/membercenter/sitehelp.html">Help</a></li>\
+start_page = '<li><a href="http://www.nytimes.com/membercenter/sitehelp.html">Help</a></li>\
  </ul>\
  <div class="mainTabsContainer tabsContainer">\
  <ul id="mainTabs" class="mainTabs tabs">\
@@ -12,23 +12,23 @@ page = '<li><a href="http://www.nytimes.com/membercenter/sitehelp.html">Help</a>
  <li class="mainTabVideo"><a href="http://www.nytimes.com/video">Video</a></li>\
  <li class="mainTabMostPopular"><a href="http://www.nytimes.com/mostpopular">Most Popular</a></li>'
 
-def get_next_target(page):
-    start_link = page.find('<a href=')
+def get_next_target(start_page):
+    start_link = start_page.find('<a href=')
 
     #Insert your code below here
     if -1 == start_link:
         return (None,0)
-    start_quote = page.find('"', start_link)
-    end_quote = page.find('"', start_quote + 1)
-    url = page[start_quote + 1:end_quote]
+    start_quote = start_page.find('"', start_link)
+    end_quote = start_page.find('"', start_quote + 1)
+    url = start_page[start_quote + 1:end_quote]
     return url, end_quote
 #
-def print_all_links(page):
+def print_all_links(start_page):
     while True:
-        url, endpos = get_next_target(page)
+        url, endpos = get_next_target(start_page)
         if url:
             print url
-            page = page[endpos:]
+            start_page = start_page[endpos:]
         else:
             break
 # >>>
@@ -49,11 +49,11 @@ def main():
     print "Script name: "+ sys.argv[0]
 
     print url
-    print "len(page) = " + str(len(page))
+    print "len(start_page) = " + str(len(start_page))
 # >>> len ('julian')
 # 6
 
-    print_all_links(page)
+    print_all_links(start_page)
     sys.exit(0)
 
 

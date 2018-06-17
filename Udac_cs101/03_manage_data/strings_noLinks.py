@@ -10,17 +10,17 @@
 # Also note that your answer will appear in
 # parentheses if you print it.
 
-def get_next_target(page):
-    start_link = page.find('<a href=')
+def get_next_target(start_page):
+    start_link = start_page.find('<a href=')
 
     #Insert your code below here
     if -1 == start_link:
         return (None,0)
-    start_quote = page.find('"', start_link)
-    end_quote = page.find('"', start_quote + 1)
-    url = page[start_quote + 1:end_quote]
+    start_quote = start_page.find('"', start_link)
+    end_quote = start_page.find('"', start_quote + 1)
+    url = start_page[start_quote + 1:end_quote]
     return url, end_quote
 
 
-page =' <a href="www.mypage.com">my web<a>'
-print get_next_target(page)
+start_page =' <a href="www.mypage.com">my web<a>'
+print get_next_target(start_page)

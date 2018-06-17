@@ -1,3 +1,4 @@
+ud1110. Introduction to Python Programming
 Goal: Develop fluency in Python.
 
 Here's an overview of what you learn.
@@ -68,3 +69,9 @@ You can use pip to install all of a project's dependencies at once with this
 command:
 
 $ pip3 install -r requirements.txt
+
+ud036. Programming Foundations with Python
+ud089. Python Builtin Containers
+AI programming with Python: 
+Learn Python, NumPy, Pandas, Matplotlib, PyTorch, and Linear Algebra
+—the foundations for building your own neural network.

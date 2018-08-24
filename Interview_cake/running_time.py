@@ -10,35 +10,26 @@ Test input:
 1000003
 '''
 
-from math import factorial, sqrt
+from math import sqrt
 
 class Primer(object):
         
     def __init__(self):
         self.MAXIMUM_RECURSION_DEPTH_EXCEEDED = 997
 
-    def get_primes_generator_function(self, n, stop):# starting point
-        while n < stop:
-            if Primer.is_prime(self, n):
-                yield n                
-            if n % 2 == 0:   
-                n += 1
-            else:
-                n += 2
-        return
-  
-    def is_prime(self, n):        
+    def is_prime(self, n):
+        prime_flag = True
+        stop = int(sqrt(n))
         if n == 0 or n == 1:
-            return False
-        elif n <= self.MAXIMUM_RECURSION_DEPTH_EXCEEDED:
-            return n - 1 == factorial(n - 1) % n
+            prime_flag = False
         else:
             start = 2
-            stop = int(sqrt(n)) + 1
-            for prime in self.get_primes_generator_function(start, stop):
-                if n % prime == 0:
-                    return False
-            return True
+            for i in range(start, stop + 1):
+                if n % i == 0:
+                    prime_flag = 0
+                    break
+        return prime_flag
+
 
 if __name__ == '__main__':
     test_cases = int(input())

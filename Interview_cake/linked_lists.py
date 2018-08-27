@@ -82,6 +82,26 @@ class Solution():
             tail = previous
         return tail
     
+    def remove_duplicates(self,head):
+        #Write your code here
+        items = set()
+        current = head
+        previous = head
+        while current:
+            if current.data in items:
+                # remove item
+                temp = current
+                current = current.next
+                previous.next = temp.next
+                temp.next = None
+                del temp
+                continue
+            else:
+                items.add(current.data)
+            previous = current
+            current = current.next
+        return head
+    
     def display(self, head):
         current = head
         print('"'),
@@ -98,11 +118,13 @@ if __name__ == '__main__':
     my_list = Solution()
     elements = int(raw_input())
     for _ in range(elements):
-        data = int(raw_input())
+        data = raw_input()
         head = my_list.insert(head, data)
         
     my_list.display(head)
     tail = my_list.reverse(head)
+    my_list.display(tail)
+    my_list.remove_duplicates(tail)
     my_list.display(tail)
     
         

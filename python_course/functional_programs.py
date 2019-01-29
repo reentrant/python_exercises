@@ -46,19 +46,17 @@ print (list(f_list(10)))
 
 print("filters")
 result = filter(lambda x: x % 2, simple_generator)
-print("type of (filter(lambda x: x % 2, simple_generator)){}".format(type(result)))
-print(result)
+print(list(result))
 
 print("#======================================================================")
-# print("Change in python3")
-# print("#======================================================================")
-# result = filter(lambda x: x % 2 == 0, simple_generator)# it works in python 2.7
-# print(list(result), end = '')
-# print("\t# However it worked in python 2.7")
+print("Change in python3")
+print("#======================================================================")
+result = filter(lambda x: x % 2 == 0, simple_generator)# it works in python 2.7
+print(list(result), end = '')
+print("\t# However it worked in python 2.7")
 
 result = filter(lambda x: x % 2 == 0, f_list(10))
-print(type(result))
-print(result)
+print(list(result))
 
 #===============================================================================
 # Reducing a List

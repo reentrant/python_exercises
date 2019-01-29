@@ -51,6 +51,27 @@ class Solution:
                 root.right = cur
         return root
     
+    def traverse(self, root):
+        #Write your code here
+        height = left = right = 0
+        if root != None:
+            if root.left != None:
+                height = self.traverse(root.left) + 1
+                left = height
+            if root.right != None:
+                height = self.traverse(root.right) + 1
+                right = height
+            Solution.height = max([Solution.height, left, right])
+
+        else:
+            print("Empty tree ", height)
+
+        return height
+
+    def getHeight(self, root):
+        self.traverse(root)
+        return Solution.height
+    
     def level_order(self, root):
         queue = []
         if root != None:
@@ -60,7 +81,7 @@ class Solution:
                 # /*Dequeue node and make it temp_node*/
                 #===============================================================
                 root = queue.pop()
-                print(root.data),
+                print(root.data, end = ' ')
                 #===============================================================
                 # /*Enqueue left child */
                 #===============================================================
@@ -74,9 +95,9 @@ class Solution:
                 
 if __name__ == '__main__':
     numbers = int(input())
-    my_tree = Solution()
+    myTree = Solution()
     root = None
     for _ in range (numbers):
         data = int(input())
-        root = my_tree.insert(root, data)
-    my_tree.level_order(root)
+        root = myTree.insert(root, data)
+    myTree.level_order(root)

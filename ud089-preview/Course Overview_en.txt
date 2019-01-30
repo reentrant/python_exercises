@@ -70,8 +70,12 @@ command:
 
 $ pip3 install -r requirements.txt
 
-ud036. Programming Foundations with Python
-ud089. Python Builtin Containers
-AI programming with Python: 
+ud089.  AI Programming with Python Preview (Python Builtin Containers)
 Learn Python, NumPy, Pandas, Matplotlib, PyTorch, and Linear Algebra
-—the foundations for building your own neural network.
+the foundations for building your own neural network.
+
+ud1110. Introduction to Python Programming (Wikipedia Web Crawl Case Study)
+
+ud892. Natural Language Processing Preview
+
+ud036.  Programming Foundations with Python (Object-Oriented Programming)

@@ -30,6 +30,7 @@ Sample Input
 7
 
 '''
+
 class Node:
     def __init__(self, data):
         self.right = self.left = None
@@ -43,11 +44,9 @@ class Solution:
             return Node(data)
         else:
             if data <= root.data:
-                cur = self.insert(root.left, data)
-                root.left = cur
+                root.left = self.insert(root.left, data)
             else:
-                cur = self.insert(root.right, data)
-                root.right = cur
+                root.right = self.insert(root.right, data)
         return root
     
     def traverse(self, root):
@@ -60,25 +59,83 @@ class Solution:
             if root.right != None:
                 height = self.traverse(root.right) + 1
                 right = height
-            Solution.height = max([Solution.height, left, right])
+            Solution.height = max(left, right)
 
         else:
             print("Empty tree ", height)
 
         return height
 
+#     def getHeight(self, root):
+#         self.traverse(root)
+#         return Solution.height
     def getHeight(self, root):
-        self.traverse(root)
-        return Solution.height
-    
-     
-
+        if root == None:
+            return -1
+        else:
+            return 1 + max( self.getHeight(root.left), self.getHeight(root.right) )
+        
+    def contains(self, root, n):
+        if root == None: return False
+        if root.data == n:
+            return True
+        elif n < root.data:
+            return self.contains(root.left, n)
+        else:
+            return self.contains(root.right, n)
+        
+    def print_inorder(self,root):
+        if root.left != None:
+            self.print_inorder(root.left)
+        if root != None:
+            print(root.data),
+        if root.right != None:
+            self.print_inorder(root.right)
+            
+    def print_preorder(self, root):
+        if root != None:
+            print(root.data),
+        if root.left != None:
+            self.print_preorder(root.left)
+        if root.right != None:
+            self.print_preorder(root.right)
+            
+    def print_postorder(self, root):
+        if root.left != None:
+            self.print_postorder(root.left)
+        if root.right != None:
+            self.print_postorder(root.right)
+        if root != None:
+            print(root.data),
+            
+    def print_levelorder(self, root):
+        if root != None:
+            queue = [root]
+            while queue:
+                node = queue.pop()
+                print(node.data),
+                if node.left != None:
+                    queue.insert(0, node.left)
+                if node.right != None:
+                    queue.insert(0, node.right)
+                
 if __name__ == '__main__':
-    numbers = int(input())
-    myTree = Solution()
+    numbers = int(raw_input())
+    my_tree = Solution()
     root = None
     for _ in range (numbers):
-        data = int(input())
-        root = myTree.insert(root, data)
-    height = myTree.getHeight(root)
-    print(height)
+        data = int(raw_input())
+        root = my_tree.insert(root, data)
+    height = my_tree.getHeight(root)
+    print('height = ', height)
+    print('tree contains 5?', my_tree.contains(root, 5))
+    my_tree.print_inorder(root)
+    print
+    my_tree.print_preorder(root)
+    print
+    my_tree.print_postorder(root)
+    print
+    my_tree.print_levelorder(root)
+    
+    
+    

@@ -118,9 +118,11 @@ for l in links:
 # that were submitted by user 62443 sorted by submission time ascending. 
 def query():
     c = db.execute("select * from links where submitter_id=62443 order by submitted_time ASC")
-    link = Link(*c.fetchone())
-    return link.id
-
+    results = []
+    for link_tuple in c:
+        link = Link(*link_tuple)
+        results.append(link.id)
+    return results
 
 
 if __name__ == '__main__':

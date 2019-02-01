@@ -92,7 +92,7 @@ links = [
 
 # make the function query() return a list of Links submitted by user 62443, by
 # submission time ascending
-def MyFn(link):
+def sort_by_submission_time(link):
     return link.submitted_time
     
 def query(user=62443):
@@ -100,7 +100,7 @@ def query(user=62443):
     for link in links:
         if link.submitter_id == user:
             submissions.append(link)
-    return sorted(submissions, key=MyFn)
+    return sorted(submissions, key=sort_by_submission_time)
 
 
 

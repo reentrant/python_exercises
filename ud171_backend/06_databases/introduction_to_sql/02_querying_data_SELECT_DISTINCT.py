@@ -22,7 +22,7 @@ db.execute("INSERT INTO person (first_name, last_name) VALUES ('Jon', 'McCracken
 
 def basic_sql_command():
     sql_command = """
-    SELECT p.first_name as FirstName, p.last_name as LastName
+    SELECT DISTINCT p.first_name as FirstName
     FROM person p;
     """
     cursor = db.execute(sql_command)

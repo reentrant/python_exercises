@@ -15,7 +15,7 @@ for contact in contacts:
     db.execute('INSERT INTO person VALUES (?, ?, ?);', contact)
 
 def basic_sql_command():
-    cursor = db.execute("SELECT person.first_name, person.last_name, person.e_mail FROM person;")
+    cursor = db.execute("SELECT p.first_name, p.last_name, p.e_mail FROM person p;")
 
     results = []
     for row in cursor:

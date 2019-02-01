@@ -18,6 +18,8 @@ for contact in contacts:
 
 db.execute("INSERT INTO person (first_name, last_name) VALUES ('Keith', 'Porteous');")
 db.execute("INSERT INTO person (first_name, last_name) VALUES ('Jon', 'McCracken');")
+db.execute("INSERT INTO person (first_name, last_name) VALUES ('Jon', 'Ahern');")
+db.execute("INSERT INTO person (first_name, last_name) VALUES ('Brian', 'Curtis');")
 
 
 def basic_sql_command():

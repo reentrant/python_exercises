@@ -19,15 +19,20 @@ for contact in contacts:
 db.execute("INSERT INTO person (first_name, last_name) VALUES ('Keith', 'Porteous');")
 db.execute("INSERT INTO person (first_name, last_name) VALUES ('Jon', 'McCracken');")
 db.execute("INSERT INTO person (first_name, last_name) VALUES ('Jon', 'Ahern');")
+db.execute("INSERT INTO person (first_name, last_name) VALUES ('James', 'Lifferth');")
 db.execute("INSERT INTO person (first_name, last_name) VALUES ('Brian', 'Curtis');")
 
 
 def basic_sql_command():
-    sql_command = """
-    SELECT DISTINCT p.first_name as FirstName
-    FROM person p;
     """
-    cursor = db.execute(sql_command)
+    English question: Who are all the people in my contact list that don't have e-mail?
+    """
+    sql_statement = """
+    SELECT p.first_name, p.last_name
+    FROM person p
+    WHERE p.e_mail IS NOT NULL; 
+    """
+    cursor = db.execute(sql_statement)
 
     results = []
     for row in cursor:

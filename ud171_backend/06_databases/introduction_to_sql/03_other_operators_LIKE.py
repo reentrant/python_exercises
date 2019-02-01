@@ -19,15 +19,21 @@ for contact in contacts:
 db.execute("INSERT INTO person (first_name, last_name) VALUES ('Keith', 'Porteous');")
 db.execute("INSERT INTO person (first_name, last_name) VALUES ('Jon', 'McCracken');")
 db.execute("INSERT INTO person (first_name, last_name) VALUES ('Jon', 'Ahern');")
+db.execute("INSERT INTO person (first_name, last_name) VALUES ('James', 'Lifferth');")
 db.execute("INSERT INTO person (first_name, last_name) VALUES ('Brian', 'Curtis');")
 
 
 def basic_sql_command():
-    sql_command = """
-    SELECT DISTINCT p.first_name as FirstName
-    FROM person p;
     """
-    cursor = db.execute(sql_command)
+    English question: Who are people in my contact list that have a first name that begins with the
+    letter J?
+    """
+    sql_statement = """
+    SELECT p.first_name
+    FROM person p
+    WHERE p.first_name LIKE 'J%' 
+    """
+    cursor = db.execute(sql_statement)
 
     results = []
     for row in cursor:

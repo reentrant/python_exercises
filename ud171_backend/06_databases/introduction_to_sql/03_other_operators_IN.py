@@ -19,15 +19,20 @@ for contact in contacts:
 db.execute("INSERT INTO person (first_name, last_name) VALUES ('Keith', 'Porteous');")
 db.execute("INSERT INTO person (first_name, last_name) VALUES ('Jon', 'McCracken');")
 db.execute("INSERT INTO person (first_name, last_name) VALUES ('Jon', 'Ahern');")
+db.execute("INSERT INTO person (first_name, last_name) VALUES ('James', 'Lifferth');")
 db.execute("INSERT INTO person (first_name, last_name) VALUES ('Brian', 'Curtis');")
 
 
 def basic_sql_command():
-    sql_command = """
-    SELECT DISTINCT p.first_name as FirstName
-    FROM person p;
     """
-    cursor = db.execute(sql_command)
+    English question: Who are all the people in my contact list that that are named Jon or Fritz?
+    """
+    sql_statement = """
+    SELECT p.first_name, p.last_name
+    FROM person p
+    WHERE p.first_name IN ('Jon', 'Fritz'); 
+    """
+    cursor = db.execute(sql_statement)
 
     results = []
     for row in cursor:

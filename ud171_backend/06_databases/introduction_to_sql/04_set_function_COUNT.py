@@ -28,7 +28,7 @@ def execute_set_function_COUNT():
     English question: How many contacts in my list do have e-mail?
     """
     sql_statement = """
-    SELECT COUNT(*)
+    SELECT COUNT(p.first_name)
     FROM person p
     WHERE p.e_mail IS NOT NULL;
     """

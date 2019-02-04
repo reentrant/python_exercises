@@ -3,7 +3,7 @@ import sqlite3
 
 # make a basic Person class
 Person = namedtuple('Person', ['first_name', 'last_name', 'e_mail'])
-contacts = [ 
+contacts = [
     Person('Jon', 'Flanders', 'jon@company.com')]
 
 # make and populate a table
@@ -30,7 +30,7 @@ def basic_sql_command():
     sql_statement = """
     SELECT p.first_name, p.last_name
     FROM person p
-    WHERE p.e_mail IS NOT NULL; 
+    WHERE p.e_mail IS NULL; 
     """
     cursor = db.execute(sql_statement)
 

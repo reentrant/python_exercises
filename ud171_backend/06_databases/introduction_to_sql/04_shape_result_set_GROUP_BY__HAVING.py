@@ -25,7 +25,8 @@ db.execute("INSERT INTO person (first_name, last_name) VALUES ('Brian', 'Curtis'
 
 def execute_sql_statement():
     """
-    English question: What is the count of every unique fist name among my contacts?
+    English question: What is the count of every unique fist name among my contacts that appear
+    more than once?
     """
     sql_statement = """
     SELECT COUNT(p.first_name) as first_name_counter, p.first_name

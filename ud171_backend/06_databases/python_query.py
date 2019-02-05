@@ -117,9 +117,21 @@ g_link_index = build_link_index()
 def query_by_id(link_id):
     return g_link_index.get(link_id)
 
+# QUIZ - implement the function add_new_link() that both adds a link to the 
+# "links" list and updates the link_index dictionary. 
+def add_new_link(link):
+    if isinstance(link, Link):
+        links.append(link)
+        g_link_index[link.id] = link
+
 if __name__ == '__main__':
     print "Query the Links submitted by user 62443 by submission time ascending:"
     for register in query_by_user():
         print register
 
-    print "query by ID: {}".format(query_by_id(5))
+    l = Link(100, 1, 1, 0,
+         "Intro to Relational Databases",
+         "https://www.udacity.com/course/intro-to-relational-databases--ud197")
+    add_new_link(l)
+    print "Testing add_new_link: {}".format(links[-1])
+    print "query by ID: {}".format(query_by_id(100))

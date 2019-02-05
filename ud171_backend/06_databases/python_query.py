@@ -102,13 +102,6 @@ def query_by_user(user=62443):
             submissions.append(link)
     return sorted(submissions, key=sort_by_submission_time)
 
-# QUIZ - implement the function query_by_id() that takes a link's ID and returns
-# the Link object itself
-def query_by_id(link_id):
-    for link in links:
-        if link.id == link_id:
-            return link
-
 # QUIZ - implement the function build_link_index() that creates a python dictionary
 # the maps a link's ID to the link itself
 def build_link_index():
@@ -117,6 +110,12 @@ def build_link_index():
         link_index[link.id] = link
     return link_index
 
+g_link_index = build_link_index()
+
+# QUIZ - implement the function query_by_id() that takes a link's ID and returns
+# the Link object itself
+def query_by_id(link_id):
+    return g_link_index.get(link_id)
 
 if __name__ == '__main__':
     print "Query the Links submitted by user 62443 by submission time ascending:"

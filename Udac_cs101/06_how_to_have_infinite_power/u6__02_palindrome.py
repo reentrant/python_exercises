@@ -32,19 +32,19 @@ def is_palindrome(s):
             return False
     
 def iterative_palindrome(s):
-    for i in range(0, len(s)/2):
+    for i in range(0, len(s) // 2):
         if s[i] != s[-(i + 1)]:
             return False
     return True
     
-print is_palindrome('')
+print(is_palindrome(''))
 #>>> True
-print is_palindrome('level')
+print(is_palindrome('level'))
 #>>> False
-print is_palindrome('abba')
+print(is_palindrome('abba'))
 #>>> True
-print time_execution('is_palindrome(\'amanaplanacanalpanama\')')
-print time_execution('iterative_palindrome(\'amanaplanacanalpanama\')')
+print(time_execution('is_palindrome(\'amanaplanacanalpanama\')'))
+print(time_execution('iterative_palindrome(\'amanaplanacanalpanama\')'))
 #Are we not pure? �No, sir!� Panama�s moody Noriega brags. �It is garbage!� Irony dooms a man�a prisoner up to new era.
-print time_execution('is_palindrome(\'ArewenotpureNosirPanamasmoodyNoriegabragsItisgarbageIronydoomsamanaprisoneruptonewera\')')
-print time_execution('iterative_palindrome(\'ArewenotpureNosirPanamasmoodyNoriegabragsItisgarbageIronydoomsamanaprisoneruptonewera\')')
+print(time_execution('is_palindrome(\'ArewenotpureNosirPanamasmoodyNoriegabragsItisgarbageIronydoomsamanaprisoneruptonewera\')'))
+print(time_execution('iterative_palindrome(\'ArewenotpureNosirPanamasmoodyNoriegabragsItisgarbageIronydoomsamanaprisoneruptonewera\')'))

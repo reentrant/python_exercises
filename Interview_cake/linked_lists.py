@@ -55,22 +55,20 @@ class Node:
         self.next = None
         
 class Solution():
-    def insert(self, head, data):
-        if head == None:
-            head = Node(data)
+    def insert(self, head_of_list, data):
+        if head_of_list == None:
+            head_of_list = Node(data)
         else:
-            current = head
+            current = head_of_list
             while current.next:
                 current = current.next
             current.next = Node(data)
-        return head 
+        return head_of_list 
     
     def reverse(self, head):
-        current = head
+        tail = current = head
         previous = None
         next_node = None
-        tail = current
-        
         if None == head or head.next == None:
             tail = head
         else:
@@ -82,17 +80,16 @@ class Solution():
             tail = previous
         return tail
     
-    def remove_duplicates(self,head):
+    def remove_duplicates(self,head_of_list):
         #Write your code here
         items = set()
-        current = head
-        previous = head
+        current = head_of_list
+        previous = None
         while current:
             if current.data in items:
                 # remove item
                 temp = current
-                current = current.next
-                previous.next = temp.next
+                previous.next = current = temp.next
                 temp.next = None
                 del temp
                 continue
@@ -100,31 +97,38 @@ class Solution():
                 items.add(current.data)
             previous = current
             current = current.next
-        return head
+        return head_of_list
     
-    def display(self, head):
-        current = head
-        print('"'),
-        while current:
-            print(current.data),
-            current = current.next
+    def display(self, head_node):
+        current_node = head_node
+        print('"', end='')
+        while current_node:
+            print(current_node.data, sep = '-', end='')
+            current_node = current_node.next
         print('"')
+        print(current_node)
     
 
 
 
 if __name__ == '__main__':
-    head = None
+    head_of_my_list = None
     my_list = Solution()
-    elements = int(raw_input())
-    for _ in range(elements):
-        data = raw_input()
-        head = my_list.insert(head, data)
+    my_list.display(head_of_my_list)
+
+    print(type(my_list), my_list)
+    number_of_elements = int(input())
+    for _ in range(number_of_elements):
+        data = input()
+        head_of_my_list = my_list.insert(head_of_my_list, data)
         
-    my_list.display(head)
-    tail = my_list.reverse(head)
+    my_list.display(head_of_my_list)
+    my_list.remove_duplicates(head_of_my_list)    
+    my_list.display(head_of_my_list)
+    tail = my_list.reverse(head_of_my_list)
     my_list.display(tail)
-    my_list.remove_duplicates(tail)
+    my_list.display(head_of_my_list)
     my_list.display(tail)
+    # my_list.display(tail)
     
         

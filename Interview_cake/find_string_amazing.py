@@ -26,7 +26,7 @@ class Stopwatch:
 DEBUG = False
 
 haystack = "abdcgab"
-needle = "ab"    
+needle = "ba"    
     
 def getAnagramIndexes(haystack, needle):
     index_lst = []

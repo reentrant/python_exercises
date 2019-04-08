@@ -18,11 +18,11 @@ def factorial(n):
 
 
 if __name__ == '__main__':
-    print factorial(0)
+    print (factorial(0))
 #>>> 1
 
-    print factorial(5)
+    print (factorial(5))
     #>>> 120
     
-    print factorial(10)
+    print (factorial(10))
 #>>> 3628800

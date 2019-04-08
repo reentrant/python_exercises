@@ -23,25 +23,25 @@ def fibonacci(n):
         after = temp
     return current
 
-print fibonacci(0)
+print(fibonacci(0))
 #>>> 0
-print fibonacci(1)
+print(fibonacci(1))
 #>>> 1
-print fibonacci(2)
-print fibonacci(3)
+print(fibonacci(2))
+print(fibonacci(3))
 
-print fibonacci(15)
-print fibonacci(36)
+print(fibonacci(15))
+print(fibonacci(36))
 
 def f_list(x):
-    return map(lambda x: fibonacci(x),range(x))
+    return list(map(fibonacci, range(x)))
 
-print f_list(11)
+print(f_list(11))
 
 fib = f_list(11)
 
-result = filter(lambda x: x % 2, fib)
-print result
+result = list(filter(lambda x: x % 2, fib))
+print(result)
 
-result = filter(lambda x: x % 2 == 0, fib)
-print result
+result = list(filter(lambda x: x % 2 == 0, fib))
+print(result)

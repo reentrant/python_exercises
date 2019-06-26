@@ -2,3 +2,9 @@
 *.prefs
 .pydevproject
 .settings\
+.idea/workspace.xml
+.idea/shelf/unnamed/shelved.patch
+.idea/shelf/unnamed.xml
+.idea/python_exercises.iml
+.idea/modules.xml
+.idea/misc.xml

@@ -63,9 +63,9 @@ def tuples():
     tuple = (1, 2, 'hi')
     print(len(tuple))  ## 3
     print(tuple[2])    ## hi
-    tuple[2] = 'bye'  ## NO, tuples cannot be changed
+#     tuple[2] = 'bye'  ## NO, tuples cannot be changed
     tuple = (1, 2, 'bye')  ## this works
-    print()
+    print(tuple)
 
 '''
 A list comprehension is a compact way to write an expression that expands to
@@ -110,7 +110,8 @@ def list_comprehensions():
     print(afruits)
     ## ['APPLE', 'BANNANA']
 
+
 if __name__ == '__main__':
-    custom_sorting()
-#     tuples()
+#     custom_sorting()
+    tuples()
 #     list_comprehensions()

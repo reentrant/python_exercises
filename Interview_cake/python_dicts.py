@@ -21,11 +21,13 @@ Harsh
 if __name__ == '__main__':
     n = int(input())
     student_marks = {}
+    print()
     for _ in range(n):
         name, *line = input().split()
         scores = list(map(float, line))
         print(name)
         print(line)
+        scores = list(map(float, line))
         print(scores)
         student_marks[name] = scores
     query_name = input()

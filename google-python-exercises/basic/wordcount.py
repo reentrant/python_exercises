@@ -58,30 +58,30 @@ def count_words(filename):
     with open(filename, "r") as f:
         text = f.read()
         
-#     word_list = dict()  # dictionary of { <word>: <count> } pairs to return
-    word_list = dict()
+#     word_dict = dict()  # dictionary of { <word>: <count> } pairs to return
+    word_dict = {}
     t = Stopwatch()
     
     new_word = ''
     for c in text:
-        if c in ' ,.;:!?*/-+_"()[]`' or c == '\r' or c== '\n':
+        if c in " ,.;:!?*/-+_()[]`'\"" or c == '\r' or c== '\n':
             if new_word:
-                if new_word in word_list.keys():
-                    word_list[new_word] += 1
+                if new_word in word_dict.keys():
+                    word_dict[new_word] += 1
                 else:
-                    word_list[new_word] = 1
+                    word_dict[new_word] = 1
                 new_word = ''
         else:
             new_word += c.lower()
     
     if new_word:
-        if new_word in word_list.keys():
-            word_list[new_word] += 1
+        if new_word in word_dict.keys():
+            word_dict[new_word] += 1
         else:
-            word_list[new_word] = 1
-#     print(word_list)
+            word_dict[new_word] = 1
+#     print(word_dict)
     print(t.stop())
-    return word_list
+    return word_dict
 
 # Define print_words(filename) and print_top(filename) functions.
 def print_words(filename):
@@ -99,9 +99,9 @@ def print_top(filename):
     prints just the top 20 most common words sorted
     so the most common word is first, then the next most common, and so on.
     """
-    counts = count_words(filename)
+    words_frequency_dict = count_words(filename)
     
-    sorted_counts = sorted(counts.items(), key = lambda pair: pair[1],
+    sorted_counts = sorted(words_frequency_dict.items(), key = lambda pair: pair[1],
                             reverse = True )
     for k, v in sorted_counts[:20]:
         print("{}\t\t{}".format(k, v))
@@ -133,6 +133,7 @@ def main():
     else:
         print ('unknown option: ' + option)
         sys.exit(1)
+
 
 if __name__ == '__main__':
     main()

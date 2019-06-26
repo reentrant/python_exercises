@@ -11,6 +11,7 @@ Test input:
 '''
 import math
 
+
 def prime(value):
     if value == 2:
         return True
@@ -26,10 +27,11 @@ def prime(value):
         i += 2
     return True
 
+
 N = int(input())
 for _ in range(N):
     print("Prime") if prime(int(input())) else print("Not prime")
-    
+
 # from math import factorial, sqrt
 # 
 # class Primer(object):
@@ -55,8 +57,8 @@ for _ in range(N):
 #         else:
 #             start = 2
 #             stop = int(sqrt(n)) + 1
-#             for prime in self.get_primes_generator_function(start, stop):
-#                 if n % prime == 0:
+#             for is_prime in self.get_primes_generator_function(start, stop):
+#                 if n % is_prime == 0:
 #                     return False
 #             return True
 # 
@@ -70,4 +72,4 @@ for _ in range(N):
 #                 if test.is_prime(n):
 #                     print('Prime')
 #                 else:
-#                     print('Not prime')
+#                     print('Not is_prime')

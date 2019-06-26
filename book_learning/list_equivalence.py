@@ -34,7 +34,7 @@ def main():
         alias[0] = 55
         print(random_list)
         
-        print("Lists a and b are: ", end = ' ')
+        print("Lists a and b are: ")
         if is_alias(random_list, alias): 
             print("aliases")
         else: 
@@ -45,7 +45,7 @@ def main():
         print("List a = ", a)
         print("List b = ", b)
         print("Lists a and b are equal? ", a == b)
-        print("Lists a and b are: ", end = ' ')
+        print("Lists a and b are: ")
         if is_alias(a, b): 
             print("aliases")
         else: 
@@ -57,8 +57,12 @@ def main():
         print('word1 =', word1)
         print('word2 =', word2)
         print('Equality: ', word1 == word2, '\nAlias: ', word1 is word2)
-    except():
-        print("Error: ")
+        print("Objects")
+        obj1 = None
+        obj2 = None
+        print('Equality: ', obj1 == obj2, '\nAlias: ', obj1 is obj2)
+    except Exception as e:
+        print(e)
         
 
 # This is the standard boilerplate that calls the main() function.

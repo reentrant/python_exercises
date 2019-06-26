@@ -44,13 +44,15 @@ from functools import reduce
 # s = list(map(int, line))
 s = input()
 
-result = reduce(lambda x,y: x or y, [c.isalnum() for c in s] )
+result = reduce(lambda x,y: x or y, map(str.isalnum, s))
 print(result)
-result = reduce(lambda x,y: x or y, [c.isalpha() for c in s] )
+result = reduce(lambda x,y: x or y, [c.isalpha() for c in s])
 print(result)
-result = reduce(lambda x,y: x or y, [c.isdigit() for c in s] )
+
+result = reduce(lambda x,y: x or y, map(str.isdigit, s))
 print(result)
-result = reduce(lambda x,y: x or y, [c.islower() for c in s] )
+
+result = reduce(lambda x,y: x or y, map(str.islower, s) )
 print(result)
-result = reduce(lambda x,y: x or y, [c.isupper() for c in s] )
+result = reduce(lambda x,y: x or y, [c.isupper() for c in s])
 print(result)

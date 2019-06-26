@@ -9,22 +9,26 @@ contacts = [
 # make and populate a table
 db = sqlite3.connect(':memory:')
 db.execute('CREATE TABLE contact ' +
-          '(first_name text, last_name text, e_mail text)')
+           '(first_name text, last_name text, e_mail text)')
 
 for contact in contacts:
     db.execute('INSERT INTO contact VALUES (?, ?, ?);', contact)
 
+
 def basic_sql_command():
     cursor = db.execute("SELECT first_name, last_name, e_mail FROM contact;")
-
+    print(type(cursor))
     results = []
     for row in cursor:
+        print(type(row), end=' ')
+        print(row)
         person = Person(*row)
         results.append(person)
     return results
+
 
 if __name__ == '__main__':
     db.execute("INSERT INTO contact (first_name, last_name) VALUES ('Fritz', 'Onion');")
     db.execute("UPDATE contact SET e_mail='fritz@company.com' WHERE first_name='Fritz';")
     for result in basic_sql_command():
-        print result
+        print("->", result)

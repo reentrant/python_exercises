@@ -58,4 +58,4 @@ def execute_sql_statement():
 
 if __name__ == '__main__':
     for result in execute_sql_statement():
-        print result
+        print(result)

@@ -1,5 +1,6 @@
 from collections import namedtuple
 
+
 def merge(*records):
     """
     :param records: (varargs list of namedtuple) The patient details.
@@ -7,20 +8,22 @@ def merge(*records):
     """
     object_fields = []
     values = []
-    Patient = namedtuple('Patient', object_fields)
+
     for rec in records:
-        for f in rec._fields:
-            object_fields.append(f)
-        print(dir(rec))
-        values.append(rec)
-    Patient._make(values)
+        for field in rec._fields:
+            object_fields.append(field)
+        for vars in rec:
+            values.append(vars)
+    Patient = namedtuple('Patient', object_fields)
+    instance = Patient._make(values)
+    return instance
 
 
+if __name__ == '__main__':
+    PersonalDetails = namedtuple('PersonalDetails', ['date_of_birth'])
+    personal_details = PersonalDetails(date_of_birth='06-04-1972')
 
-PersonalDetails = namedtuple('PersonalDetails', ['date_of_birth'])
-personal_details = PersonalDetails(date_of_birth = '06-04-1972')
+    Complexion = namedtuple('Complexion', ['eye_color', 'hair_color'])
+    complexion = Complexion(eye_color = 'Blue', hair_color='Black')
 
-Complexion = namedtuple('Complexion', ['eye_color', 'hair_color'])
-complexion = Complexion(eye_color = 'Blue', hair_color = 'Black')
-
-print(merge(personal_details, complexion))
+    print(merge(personal_details, complexion))

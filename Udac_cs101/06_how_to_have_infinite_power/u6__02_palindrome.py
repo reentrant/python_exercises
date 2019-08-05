@@ -13,38 +13,42 @@ Created on 09/01/2018
 '''
 import time
 
+
 def time_execution(code):
-    start = time.clock()
+    start = time.perf_counter()
     result = eval(code)
-    run_time = time.clock() - start
+    run_time = time.perf_counter() - start
     return result, run_time
 
-def is_palindrome(s):
-#     print s
+
+def recursive_check_palindrome(s):
     if s == '':
         return True
     elif len(s) == 1:
         return True
     elif len(s) > 1:
         if s[0] == s[-1]:
-            return is_palindrome(s[1:-1])
+            return recursive_check_palindrome(s[1:-1])
         else:
             return False
-    
-def iterative_palindrome(s):
+
+
+def iterative_check_palindrome(s):
     for i in range(0, len(s) // 2):
         if s[i] != s[-(i + 1)]:
             return False
     return True
-    
-print(is_palindrome(''))
-#>>> True
-print(is_palindrome('level'))
-#>>> False
-print(is_palindrome('abba'))
-#>>> True
-print(time_execution('is_palindrome(\'amanaplanacanalpanama\')'))
-print(time_execution('iterative_palindrome(\'amanaplanacanalpanama\')'))
-#Are we not pure? �No, sir!� Panama�s moody Noriega brags. �It is garbage!� Irony dooms a man�a prisoner up to new era.
-print(time_execution('is_palindrome(\'ArewenotpureNosirPanamasmoodyNoriegabragsItisgarbageIronydoomsamanaprisoneruptonewera\')'))
-print(time_execution('iterative_palindrome(\'ArewenotpureNosirPanamasmoodyNoriegabragsItisgarbageIronydoomsamanaprisoneruptonewera\')'))
+
+
+if __name__ == '__main__':
+    print(recursive_check_palindrome(''))
+    #>>> True
+    print(recursive_check_palindrome('level'))
+    #>>> False
+    print(recursive_check_palindrome('abba'))
+    #>>> True
+    print(time_execution('recursive_check_palindrome(\'amanaplanacanalpanama\')'))
+    print(time_execution('iterative_check_palindrome(\'amanaplanacanalpanama\')'))
+    #Are we not pure? �No, sir!� Panama�s moody Noriega brags. �It is garbage!� Irony dooms a man�a prisoner up to new era.
+    print(time_execution('recursive_check_palindrome(\'ArewenotpureNosirPanamasmoodyNoriegabragsItisgarbageIronydoomsamanaprisoneruptonewera\')'))
+    print(time_execution('iterative_check_palindrome(\'ArewenotpureNosirPanamasmoodyNoriegabragsItisgarbageIronydoomsamanaprisoneruptonewera\')'))

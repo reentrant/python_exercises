@@ -1,16 +1,16 @@
 class MovingTotal:
     def __init__(self):
-        self.elems = []
+        self.elements = []
         self.totals = set()
 
     def append(self, numbers):
         """
         :param numbers: (list) The list of numbers.
         """
-        self.elems += numbers
-        if len(self.elems) >= 3:
-            self.totals.add(sum(self.elems[-3:]))
-        # print(self.elems)
+        self.elements += numbers
+        if len(self.elements) >= 3:
+            self.totals.add(sum(self.elements[-3:]))
+        print(self.elements)
 
     def contains(self, total):
         """
@@ -23,6 +23,7 @@ class MovingTotal:
 movingtotal = MovingTotal()
 movingtotal.append([1, 2, 3])
 print(movingtotal.contains(6))
+movingtotal.append([])
 print(movingtotal.contains(9))
 movingtotal.append([0])
 #print(movingtotal.contains(9))

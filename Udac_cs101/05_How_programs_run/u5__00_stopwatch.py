@@ -14,6 +14,6 @@ def spin_loop(n):
     i = i + 1
   return i
     
-print time_execution('spin_loop(10 ** 5)')[1]
-print time_execution('spin_loop(10 ** 6)')[1]
-print time_execution('spin_loop(10 ** 7)')[1]
+print(time_execution('spin_loop(10 ** 5)')[1])
+print(time_execution('spin_loop(10 ** 6)')[1])
+print(time_execution('spin_loop(10 ** 7)')[1])

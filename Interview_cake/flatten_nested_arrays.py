@@ -1,6 +1,7 @@
 # Write some code, that will flatten an array of arbitrarily nested arrays of integers into a
 # flat array of integers. e.g. [[1,2,[3]],4] -> [1,2,3,4].
 
+
 def flat_a_list(nested_list):
     flatten_list = []
 
@@ -13,4 +14,4 @@ def flat_a_list(nested_list):
 
 
 if __name__ == '__main__':
-    print(flat_a_list([[1,2,[3]],4]))
+    print(flat_a_list([[1, 2, [3]], 4]))

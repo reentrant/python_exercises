@@ -13,15 +13,15 @@ from itertools import permutations
 
 class Stopwatch:
     def __init__(self):
-        self.start = time.clock()
+        self.start = time.process_time()
         
     def stop(self):
-        self.now = time.clock()
+        self.now = time.process_time()
         self.elapsed_time = self.now - self.start
         return self.elapsed_time
     
     def reset(self):
-        self.start = time.clock()
+        self.start = time.process_time()
 
 DEBUG = False
 

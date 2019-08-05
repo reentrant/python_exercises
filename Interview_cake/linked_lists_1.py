@@ -49,14 +49,17 @@ How can we move each node's next pointer to its previous node in one pass from h
 @author: Julian
 '''
 
+
 class Node:
     def __init__(self, data):
         self.data = data
         self.next = None
-        
-class Solution():
-    def insert(self, head_of_list, data):
-        if head_of_list == None:
+
+
+class Solution:
+    @staticmethod
+    def insert(head_of_list, data):
+        if head_of_list is None:
             head_of_list = Node(data)
         else:
             current = head_of_list
@@ -64,12 +67,13 @@ class Solution():
                 current = current.next
             current.next = Node(data)
         return head_of_list 
-    
-    def reverse(self, head):
+
+    @staticmethod
+    def reverse(head):
         tail = current = head
         previous = None
         next_node = None
-        if None == head or head.next == None:
+        if head is None or head.next is None:
             tail = head
         else:
             while current:
@@ -79,9 +83,9 @@ class Solution():
                 current = next_node
             tail = previous
         return tail
-    
-    def remove_duplicates(self,head_of_list):
-        #Write your code here
+
+    @staticmethod
+    def remove_duplicates(head_of_list):
         items = set()
         current = head_of_list
         previous = None
@@ -98,8 +102,9 @@ class Solution():
             previous = current
             current = current.next
         return head_of_list
-    
-    def display(self, head_node):
+
+    @staticmethod
+    def display(head_node):
         current_node = head_node
         print('"', end='')
         while current_node:
@@ -107,28 +112,23 @@ class Solution():
             current_node = current_node.next
         print('"')
         print(current_node)
-    
-
 
 
 if __name__ == '__main__':
     head_of_my_list = None
     my_list = Solution()
     my_list.display(head_of_my_list)
-
     print(type(my_list), my_list)
+
     number_of_elements = int(input())
     for _ in range(number_of_elements):
         data = input()
         head_of_my_list = my_list.insert(head_of_my_list, data)
-        
     my_list.display(head_of_my_list)
-    my_list.remove_duplicates(head_of_my_list)    
-    my_list.display(head_of_my_list)
-    tail = my_list.reverse(head_of_my_list)
-    my_list.display(tail)
-    my_list.display(head_of_my_list)
-    my_list.display(tail)
+
+    # my_list.remove_duplicates(head_of_my_list)
+    # my_list.display(head_of_my_list)
+    # tail = my_list.reverse(head_of_my_list)
     # my_list.display(tail)
-    
-        
+    # my_list.display(head_of_my_list)
+    # my_list.display(tail)

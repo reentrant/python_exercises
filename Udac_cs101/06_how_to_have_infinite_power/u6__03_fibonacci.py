@@ -25,9 +25,9 @@ def fibonacci(n):
 
 
 print(fibonacci(0))
-#>>> 0
+# >>> 0
 print(fibonacci(1))
-#>>> 1
+# >>> 1
 print(fibonacci(2))
 print(fibonacci(15))
-#>>> 610
+# >>> 610

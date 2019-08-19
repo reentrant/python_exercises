@@ -11,7 +11,7 @@
 #   text = 'all zip files are compressed' -> -1
 
 text = "all zip files are zipped" 
-print text
+print(text)
 #DO NOT USE IMPORT
 
 #ENTER CODE BELOW HERE
@@ -20,9 +20,9 @@ print text
 #INCORRECT
 
 first = text.find("zip")# first occurrence
-print  first
-print text.find("zip",first+1) # find from an index
+print(first)
+print(text.find("zip",first+1)) # find from an index
 text = 'all zip files are compressed'
-print text
+print(text)
 first = text.find("zip")# first occurrence
-print text.find("zip",first+1) # find from an index
+print(text.find("zip",first+1)) # find from an index

@@ -33,8 +33,10 @@ print(fibonacci(3))
 print(fibonacci(15))
 print(fibonacci(36))
 
+
 def f_list(x):
     return list(map(fibonacci, range(x)))
+
 
 print(f_list(11))
 

@@ -17,15 +17,15 @@ for contact in contacts:
 def basic_sql_command():
     cursor = db.execute("SELECT first_name, last_name, e_mail FROM contact;")
 
-    results = []
+    print(type(cursor))
     for row in cursor:
-        person = Person(*row)
-        results.append(person)
-    return results
+        print(type(row), end=' ')
+        yield Person(*row)
+
 
 if __name__ == '__main__':
     db.execute("INSERT INTO contact (first_name, last_name) VALUES ('Fritz', 'Onion');")
     db.execute("UPDATE contact SET e_mail='fritz@company.com' WHERE first_name='Fritz';")
     db.execute("DELETE FROM contact WHERE first_name='Jon';")
     for result in basic_sql_command():
-        print result
+        print(result)

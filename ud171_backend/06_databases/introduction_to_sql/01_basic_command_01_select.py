@@ -24,18 +24,16 @@ db.execute("INSERT INTO person (first_name, last_name) VALUES ('Brian', 'Curtis'
 
 def basic_sql_command():
     sql_command = """
-    SELECT p.first_name as FirstName, p.last_name as LastName
+    SELECT p.first_name as FirstName, p.last_name as LastName, p.e_mail as Email
     FROM person p;
     """
     cursor = db.execute(sql_command)
 
-    results = []
     for row in cursor:
-        results.append(row)
-    return results
+        print(type(row), end=' ')
+        yield Person(*row)
 
 
 if __name__ == '__main__':
     for result in basic_sql_command():
-        print(type(result), end=' ')
-        print(result)
+        print("->", result)

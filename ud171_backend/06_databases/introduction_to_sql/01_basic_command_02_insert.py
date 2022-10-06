@@ -14,16 +14,16 @@ db.execute('CREATE TABLE contact ' +
 for contact in contacts:
     db.execute('INSERT INTO contact VALUES (?, ?, ?);', contact)
 
+
 def basic_sql_command():
     cursor = db.execute("SELECT first_name, last_name, e_mail FROM contact;")
 
-    results = []
     for row in cursor:
         person = Person(*row)
-        results.append(person)
-    return results
+        yield person
+
 
 if __name__ == '__main__':
     db.execute("INSERT INTO contact (first_name, last_name) VALUES ('Fritz', 'Onion');")
     for result in basic_sql_command():
-        print result
+        print(result)

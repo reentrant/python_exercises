@@ -18,13 +18,9 @@ for contact in contacts:
 def basic_sql_command():
     cursor = db.execute("SELECT first_name, last_name, e_mail FROM contact;")
     print(type(cursor))
-    results = []
     for row in cursor:
         print(type(row), end=' ')
-        print(row)
-        person = Person(*row)
-        results.append(person)
-    return results
+        yield Person(*row)
 
 
 if __name__ == '__main__':

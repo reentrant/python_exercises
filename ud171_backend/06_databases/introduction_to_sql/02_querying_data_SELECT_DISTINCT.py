@@ -29,11 +29,10 @@ def basic_sql_command():
     """
     cursor = db.execute(sql_command)
 
-    results = []
     for row in cursor:
-        results.append(row)
-    return results
+        yield row
+
 
 if __name__ == '__main__':
     for result in basic_sql_command():
-        print result
+        print(result)

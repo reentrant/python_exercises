@@ -1,16 +1,7 @@
 *.pyc
 *.prefs
 .pydevproject
-.settings\
-.idea/workspace.xml
-.idea/shelf/unnamed/shelved.patch
-.idea/shelf/unnamed.xml
-.idea/python_exercises.iml
-.idea/modules.xml
-.idea/misc.xml
-.idea/vcs.xml
-.idea/inspectionProfiles/Project_Default.xml
+    .settings/
+.idea/
 .project
-.project
-.pydevproject
 .settings/org.eclipse.core.resources.prefs

@@ -1,11 +1,11 @@
-'''
+"""
 Created on 14/06/2018
+# A generator of generators
 
 @author: jruiz
-'''
-#===============================================================================
-# A generator of generators
-#===============================================================================
+"""
+
+
 def fibonacci():
     """Ein Fibonacci-Zahlen-Generator"""
     a, b = 0, 1
@@ -13,24 +13,18 @@ def fibonacci():
         yield a
         a, b = b, a + b
 
-def firstn(g, n):
+
+def first_n(g, n):
     for _ in range(n):
-#         print">>>", g.next()
-        yield g.next()
+        yield next(g())
+
 
 if __name__ == '__main__':
-    #===========================================================================
-    # A simple generator
-    #===========================================================================
+    import sys
+    print(sys.version)
     simple_generator = fibonacci()
-#     for e in range(5):
-#         print(next(simple_generator))
-#     print('===================================================================')
+    for e in range(5):
+        print(next(simple_generator))
+    print("===")
+    first_n(simple_generator, 5)
 
-    #===========================================================================
-    # A generator of generators (it worked in python 2.7...)
-    #===========================================================================
-    print(type(firstn(fibonacci(), 10)))
-    foo = firstn
-    print(type(foo))
-    print(list(firstn(simple_generator, 10)))

@@ -3,15 +3,19 @@ Created on 22/01/2018
 
 @author: jruiz
 '''
+
+
 def squares():
-    return [ n * n for n in range(10) ]
+    return [n * n for n in range(10)]
+
 
 def squares_narrow():
-    return [ n * n for n in range(10) if n < 5]
+    return [n * n for n in range(10) if n < 5]
 
 
 def mult_tables(n):
     return [n * i for i in range(10)]
+
 
 def mult_tables_narrow(n):
     return [n * i for i in range(10) if i < 4]
@@ -19,23 +23,27 @@ def mult_tables_narrow(n):
 
 strings = ['hello', 'and', 'goodbye']
 
+
 def shouting():
-    return [ s.upper() + '!!!' for s in strings]
+    return [s.upper() + '!!!' for s in strings]
+
 
 def shouting_narrow():
-    return [ s.upper() + '!!!' for s in strings if 'a' in s]
+    return [s.upper() + '!!!' for s in strings if 'a' in s]
+
 
 def pitagoras():
-    return [ (x, y, z) for x in range(1, 30) \
-                    for y in range(x, 30) \
-                    for z in range(y, 30) if x * x + y  * y == z * z]
+    return [(x, y, z) for x in range(1, 30)\
+            for y in range(x, 30)\
+            for z in range(y, 30) if x * x + y * y == z * z]
 
 
 colours = ["red", "green", "yellow", "blue"]
 things = ["house", "car"]
 
+
 def cross_product():
-    return [ (x,y) for x in colours for y in things]
+    return [(x, y) for x in colours for y in things]
 
 if __name__ == '__main__':
     print(squares_narrow())

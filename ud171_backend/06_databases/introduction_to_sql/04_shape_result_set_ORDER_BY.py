@@ -30,16 +30,14 @@ def execute_sql_statement():
     sql_statement = """
     SELECT p.last_name, p.first_name
     FROM person p
-    ORDER BY p.last_name;
+    ORDER BY p.last_name ASC;
     """
     cursor = db.execute(sql_statement)
 
-    results = []
     for row in cursor:
-        results.append(row)
-    return results
+        yield row
 
 
 if __name__ == '__main__':
     for result in execute_sql_statement():
-        print result
+        print(result)

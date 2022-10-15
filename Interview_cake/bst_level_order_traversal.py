@@ -63,7 +63,7 @@ if __name__ == '__main__':
     numbers = int(input())
     my_tree = Solution()
     node = None
-    for _ in range (numbers):
+    for _ in range(numbers):
         info = int(input())
         node = my_tree.insert(node, info)
     my_tree.level_order(node)

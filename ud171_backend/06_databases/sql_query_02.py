@@ -92,8 +92,9 @@ db = sqlite3.connect(':memory:')
 db.execute('create table links ' +
           '(id integer, submitter_id integer, submitted_time integer, ' +
           'votes integer, title text, url text)')
-for l in links:
-    db.execute('insert into links values (?, ?, ?, ?, ?, ?)', l)
+for lnk in links:
+    db.execute('insert into links values (?, ?, ?, ?, ?, ?)', lnk)
+
 
 # db is an in-memory sqlite database that can respond to sql queries using the
 # execute() function.
@@ -107,16 +108,17 @@ for l in links:
 # results won't be Links; they'll be tuples, but they can be passed turned into
 # a Link.
 #
-# For example, to print all the votes for all of the links, do this:
-#
-# c = db.execute("select * from links")
-# for link_tuple in c:
-#     link = Link(*link_tuple)
-#     print link.votes
-#
+# For example, to print all the votes for all the links, do this:
+def print_all_the_votes_for_all_the_links():
+    c = db.execute("select * from links")
+    for link_tuple in c:
+        link = Link(*link_tuple)
+        print(link.votes)
+
+
 # QUIZ - make the function query() return the ID of the link that was 
 # submitted by user 62443 and has > 1000 votes. 
-def query(user=62443, votes=1000):
+def query_link_id_by(user, votes):
     sql_string = ("select * from links where submitter_id = " + str(user) + " and votes > "
                   + str(votes))
     c = db.execute(sql_string)
@@ -125,4 +127,4 @@ def query(user=62443, votes=1000):
 
 
 if __name__ == '__main__':
-    print query()
+    print(query_link_id_by(user=62443, votes=1000))

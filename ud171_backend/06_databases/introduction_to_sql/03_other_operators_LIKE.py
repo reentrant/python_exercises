@@ -23,7 +23,7 @@ db.execute("INSERT INTO person (first_name, last_name) VALUES ('James', 'Liffert
 db.execute("INSERT INTO person (first_name, last_name) VALUES ('Brian', 'Curtis');")
 
 
-def basic_sql_command():
+def execute_sql_command():
     """
     English question: Who are people in my contact list that have a first name that begins with the
     letter J?
@@ -35,11 +35,10 @@ def basic_sql_command():
     """
     cursor = db.execute(sql_statement)
 
-    results = []
     for row in cursor:
-        results.append(row)
-    return results
+        yield row
+
 
 if __name__ == '__main__':
-    for result in basic_sql_command():
-        print result
+    for result in execute_sql_command():
+        print(result)

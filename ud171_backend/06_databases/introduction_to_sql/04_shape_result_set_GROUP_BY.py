@@ -33,12 +33,11 @@ def execute_sql_statement():
     GROUP BY p.first_name;
     """
     cursor = db.execute(sql_statement)
-    results = []
+
     for row in cursor:
-        results.append(row)
-    return results
+        yield row
 
 
 if __name__ == '__main__':
     for result in execute_sql_statement():
-        print result
+        print(result)

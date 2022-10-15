@@ -23,22 +23,22 @@ db.execute("INSERT INTO person (first_name, last_name) VALUES ('James', 'Liffert
 db.execute("INSERT INTO person (first_name, last_name) VALUES ('Brian', 'Curtis');")
 
 
-def basic_sql_command():
+def execute_sql_command():
     """
     English question: What is the last name of all the people I know whose first name is Jon?
     """
     sql_statement = """
     SELECT p.last_name as LastName
     FROM person p
-    WHERE p.first_name='Jon';
+    WHERE p.first_name='Jon'
+    ORDER BY LastName;
     """
     cursor = db.execute(sql_statement)
 
-    results = []
     for row in cursor:
-        results.append(row)
-    return results
+        yield row
+
 
 if __name__ == '__main__':
-    for result in basic_sql_command():
-        print result
+    for result in execute_sql_command():
+        print(result)

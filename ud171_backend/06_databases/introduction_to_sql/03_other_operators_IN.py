@@ -23,22 +23,22 @@ db.execute("INSERT INTO person (first_name, last_name) VALUES ('James', 'Liffert
 db.execute("INSERT INTO person (first_name, last_name) VALUES ('Brian', 'Curtis');")
 
 
-def basic_sql_command():
+def execute_sql_command():
     """
-    English question: Who are all the people in my contact list that that are named Jon or Fritz?
+    English question: Who are all the people in my contact list that are named Jon or Fritz?
     """
     sql_statement = """
     SELECT p.first_name, p.last_name
     FROM person p
+    -- # WHERE p.first_name = 'Jon' OR p.first_name = 'Fritz';
     WHERE p.first_name IN ('Jon', 'Fritz'); 
     """
     cursor = db.execute(sql_statement)
 
-    results = []
     for row in cursor:
-        results.append(row)
-    return results
+        yield row
+
 
 if __name__ == '__main__':
-    for result in basic_sql_command():
-        print result
+    for result in execute_sql_command():
+        print(result)

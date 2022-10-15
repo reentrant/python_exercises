@@ -22,18 +22,19 @@ db.execute("INSERT INTO person (first_name, last_name) VALUES ('Jon', 'Ahern');"
 db.execute("INSERT INTO person (first_name, last_name) VALUES ('Brian', 'Curtis');")
 
 
-def basic_sql_command():
+def execute_sql_command():
     sql_command = """
     SELECT p.first_name as FirstName, p.last_name as LastName, p.e_mail as Email
     FROM person p;
     """
     cursor = db.execute(sql_command)
 
+    results = []
     for row in cursor:
-        print(type(row), end=' ')
-        yield Person(*row)
+        results.append(row)
+    return results
 
 
 if __name__ == '__main__':
-    for result in basic_sql_command():
-        print("->", result)
+    for result in execute_sql_command():
+        print(result)

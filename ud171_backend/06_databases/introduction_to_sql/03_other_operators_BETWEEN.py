@@ -23,7 +23,7 @@ db.execute("INSERT INTO person (first_name, last_name) VALUES ('James', 'Liffert
 db.execute("INSERT INTO person (first_name, last_name) VALUES ('Brian', 'Curtis');")
 
 
-def basic_sql_command():
+def execute_sql_command():
     """
     English question: Who are all the people in my contact list that their last name is equal or
     greater than Curtis and equal or less than Porteous?
@@ -31,15 +31,15 @@ def basic_sql_command():
     sql_statement = """
     SELECT p.last_name as LastName
     FROM person p
-    WHERE p.last_name BETWEEN 'Curtis' AND 'Porteous' 
+    WHERE p.last_name BETWEEN 'Curtis' AND 'Porteous'
+    ORDER BY LastName
     """
     cursor = db.execute(sql_statement)
 
-    results = []
     for row in cursor:
-        results.append(row)
-    return results
+        yield row
+
 
 if __name__ == '__main__':
-    for result in basic_sql_command():
-        print result
+    for result in execute_sql_command():
+        print(result)

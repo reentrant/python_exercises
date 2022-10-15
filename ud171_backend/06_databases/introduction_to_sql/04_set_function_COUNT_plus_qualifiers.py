@@ -23,7 +23,7 @@ db.execute("INSERT INTO person (first_name, last_name) VALUES ('James', 'Liffert
 db.execute("INSERT INTO person (first_name, last_name) VALUES ('Brian', 'Curtis');")
 
 
-def execute_set_function_COUNT():
+def execute_sql_command():
     """
     English question: What is the count of unique first names among my contacts?
     """
@@ -34,9 +34,10 @@ def execute_set_function_COUNT():
     cursor = db.execute(sql_statement)
     return cursor
 
+
 if __name__ == '__main__':
     """
     Set functions in ANSI SQL: COUNT, MAX, MIN, AVG, SUM
     """
-    for result in execute_set_function_COUNT():
-        print result
+    for result in execute_sql_command():
+        print(result)

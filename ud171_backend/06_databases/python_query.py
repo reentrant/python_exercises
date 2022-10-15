@@ -94,13 +94,15 @@ links = [
 # submission time ascending
 def sort_by_submission_time(link):
     return link.submitted_time
-    
+
+
 def query_by_user(user=62443):
     submissions = []
     for link in links:
         if link.submitter_id == user:
             submissions.append(link)
     return sorted(submissions, key=sort_by_submission_time)
+
 
 # QUIZ - implement the function build_link_index() that creates a python dictionary
 # the maps a link's ID to the link itself
@@ -110,28 +112,32 @@ def build_link_index():
         link_index[link.id] = link
     return link_index
 
+
 g_link_index = build_link_index()
+
 
 # QUIZ - implement the function query_by_id() that takes a link's ID and returns
 # the Link object itself
 def query_by_id(link_id):
     return g_link_index.get(link_id)
 
-# QUIZ - implement the function add_new_link() that both adds a link to the 
+
+# QUIZ - implement the function add_new_link() that both adds a link to the
 # "links" list and updates the link_index dictionary. 
 def add_new_link(link):
     if isinstance(link, Link):
         links.append(link)
         g_link_index[link.id] = link
 
+
 if __name__ == '__main__':
-    print "Query the Links submitted by user 62443 by submission time ascending:"
+    print("Query the Links submitted by user 62443 by submission time ascending:")
     for register in query_by_user():
-        print register
+        print(register)
 
     l = Link(100, 1, 1, 0,
          "Intro to Relational Databases",
          "https://www.udacity.com/course/intro-to-relational-databases--ud197")
     add_new_link(l)
-    print "Testing add_new_link: {}".format(links[-1])
-    print "query by ID: {}".format(query_by_id(100))
+    print("Testing add_new_link: {}".format(links[-1]))
+    print("query by ID: {}".format(query_by_id(100)))

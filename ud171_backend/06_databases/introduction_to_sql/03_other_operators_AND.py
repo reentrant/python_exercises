@@ -23,26 +23,24 @@ db.execute("INSERT INTO person (first_name, last_name) VALUES ('James', 'Liffert
 db.execute("INSERT INTO person (first_name, last_name) VALUES ('Brian', 'Curtis');")
 
 
-def basic_sql_command():
+def execute_sql_command():
     """
     English question: Who are all the people in my contact list that have the first name Joh and
     their last name is greater than Curtis?
     """
     sql_statement = """
-    SELECT p.last_name as LastName
+    SELECT p.first_name as FirstName, p.last_name as LastName
     FROM person p
-    WHERE p.first_name='Jon'
-    AND p.last_name > 'Curtis'
-    -- OR p.birthdate > '12/31/1975'
+    WHERE p.first_name='Jon' AND p.last_name > 'Curtis'
+    -- OR p.birthdate > '12/31/1975'  # -- is a comment in SQL
 
     """
     cursor = db.execute(sql_statement)
 
-    results = []
     for row in cursor:
-        results.append(row)
-    return results
+        yield row
+
 
 if __name__ == '__main__':
-    for result in basic_sql_command():
-        print result
+    for result in execute_sql_command():
+        print(result)
